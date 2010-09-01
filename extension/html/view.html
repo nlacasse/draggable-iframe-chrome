@@ -1,0 +1,39 @@
+<html>
+<head>
+  <style type='text/css'>
+    document, html, body {
+      background-color: rgba(0, 156, 255, .6)
+    }
+  </style>
+</head>
+<body>
+  Draggable Secure Iframe
+
+  <script type="text/javascript">
+
+    /**
+    * Adds mousedown listener to iframe body that tells the overlord to start
+    * dragging the iframe.
+    */
+    var makeDraggable = function () {
+      var body = document.body;
+      body.addEventListener('mousedown', function (mousedown_event) {
+        chrome.extension.sendRequest({
+          to: 'overlord',
+          method: 'startDrag',
+          params: {
+            x: mousedown_event.screenX,
+            y: mousedown_event.screenY
+          }
+        });
+
+        mousedown_event.preventDefault();
+      }, true);
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+      makeDraggable();
+    }, false);
+  </script>
+</body>
+</html>

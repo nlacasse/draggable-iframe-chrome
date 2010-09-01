@@ -1,0 +1,28 @@
+{
+  "name": "Draggable Iframe example",
+  "version": "1.0",
+  "description": "Draggable Iframe example from BorderStylo",
+  "minimum_chrome_version": "6.0.447.0",
+  "background_page" : "html/background.html",
+  "permissions": [
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "css": [
+        "css/reset.css",
+        "css/capture-div.css"
+      ],
+      "js": [
+        "js/jquery.base.js",
+        "js/content_script.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ]
+}

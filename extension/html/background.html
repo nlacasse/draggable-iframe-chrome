@@ -1,0 +1,13 @@
+<html>
+<head>
+
+  <script type="text/javascript">
+    // Bounce all requests back to the tab they came from
+    chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
+      chrome.tabs.sendRequest(sender.tab.id, request, sendResponse);
+    });
+  </script>
+
+</head>
+<body>Draggable Iframe Background Page</body>
+</html>
